@@ -1,0 +1,15 @@
+version: '3,7'
+services:
+  mysqldb:
+    restart: always
+    image: mysql:8.0
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./data:/var/lib/postgresql
+      - ./artifacts/schema:/docker-entrypoint-initdb.d/
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=22Dec22
